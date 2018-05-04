@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2018 3:06:28 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="co.edu.udea.wi.dto.Request" table="REQUEST">
+        <id name="ID" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="applicationDate" type="java.util.Date">
+            <column name="APPLICATIONDATE" />
+        </property>
+        <many-to-one name="type" class="co.edu.udea.wi.dto.RequestType" fetch="join">
+            <column name="TYPE" />
+        </many-to-one>
+        <many-to-one name="state" class="co.edu.udea.wi.dto.RequestState" fetch="join">
+            <column name="STATE" />
+        </many-to-one>
+        <many-to-one name="customer" class="co.edu.udea.wi.dto.Customer" fetch="join">
+            <column name="CUSTOMER" />
+        </many-to-one>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+    </class>
+</hibernate-mapping>
