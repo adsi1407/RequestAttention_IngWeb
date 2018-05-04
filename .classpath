@@ -31,5 +31,6 @@
 	<classpathentry kind="lib" path="/Development/RequestAttentionIngWeb/Libraries/Spring4/spring-tx-4.1.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Development/RequestAttentionIngWeb/Libraries/Spring4/spring-web-4.1.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="/Development/RequestAttentionIngWeb/Libraries/mysql-connector-java-5.1.22-bin.zip"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
