@@ -1,34 +1,95 @@
 package co.edu.udea.wi.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.AnswerDao;
 import co.edu.udea.wi.dto.Answer;
 
-public class AnswerDaoImpl implements AnswerDao {
+public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 
 	@Override
 	public void add(Answer answer) throws Exception {
-		// TODO Auto-generated method stub
-
+		
+		Transaction transaction = null;
+		Session session = null;
+		
+		try {
+			
+			session = this.getSessionFactory().getCurrentSession();
+			transaction = session.beginTransaction();
+			session.save(answer);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public void update(Answer answer) throws Exception {
-		// TODO Auto-generated method stub
-
+		
+		Transaction transaction = null;
+		Session session = null;
+		
+		try {
+			
+			session = this.getSessionFactory().getCurrentSession();
+			transaction = session.beginTransaction();
+			session.update(answer);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public void delete(Answer answer) throws Exception {
-		// TODO Auto-generated method stub
-
+		
+		Transaction transaction = null;
+		Session session = null;
+		
+		try {
+			
+			session = this.getSessionFactory().getCurrentSession();
+			transaction = session.beginTransaction();
+			session.delete(answer);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public List<Answer> getAnswers() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Answer> answers = new ArrayList<Answer>();
+        Session session = null;
+        try{
+            session = this.getSessionFactory().getCurrentSession();
+            
+            Criteria criteria = session.createCriteria(Answer.class);
+            
+            answers = criteria.list();
+            
+        }catch(HibernateException e){
+            throw new Exception(e);
+        }finally{
+        	session.close();
+        }
+        
+        return answers;
 	}
 
 }
