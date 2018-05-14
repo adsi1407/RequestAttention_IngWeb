@@ -38,4 +38,11 @@ public interface AnswerDao {
 	 * @throws Exception
 	 */
 	public List<Answer> getAnswers() throws Exception;
+	
+	/**
+	 * Description Este método se utiliza para obtener una respuesta por su id
+	 * @return
+	 * @throws Exception
+	 */
+	public Answer getAnswer(int id) throws Exception;
 }

@@ -92,4 +92,22 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
         return answers;
 	}
 
+	@Override
+	public Answer getAnswer(int id) throws Exception {
+		
+		Answer answer = null;
+        Session session = null;
+        try{
+            session = this.getSessionFactory().getCurrentSession();
+            
+            answer = (Answer)session.load(Answer.class, id);
+            
+        }catch(HibernateException e){
+            throw new Exception(e);
+        }finally{
+            session.close();
+        }
+        
+        return answer;
+	}
 }

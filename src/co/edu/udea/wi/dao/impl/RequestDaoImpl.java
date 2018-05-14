@@ -92,4 +92,22 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
         return requests;
 	}
 
+	@Override
+	public Request getRequest(int id) throws Exception {
+		
+		Request request = null;
+        Session session = null;
+        try{
+            session = this.getSessionFactory().getCurrentSession();
+            
+            request = (Request)session.load(Request.class, id);
+            
+        }catch(HibernateException e){
+            throw new Exception(e);
+        }finally{
+            session.close();
+        }
+        
+        return request;
+	}
 }

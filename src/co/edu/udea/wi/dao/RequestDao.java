@@ -38,4 +38,11 @@ public interface RequestDao {
 	 * @throws Exception
 	 */
 	public List<Request> getRequests() throws Exception;
+	
+	/**
+	 * Description Este método se utiliza para obtener una solicitud por su id
+	 * @return
+	 * @throws Exception
+	 */
+	public Request getRequest(int id) throws Exception;
 }
