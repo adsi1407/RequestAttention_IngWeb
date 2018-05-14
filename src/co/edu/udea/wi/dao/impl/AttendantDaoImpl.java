@@ -9,13 +9,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import co.edu.udea.wi.dao.CustomerDao;
-import co.edu.udea.wi.dto.Customer;
+import co.edu.udea.wi.dao.AttendantDao;
+import co.edu.udea.wi.dto.Attendant;
 
-public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
+public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDao {
 
 	@Override
-	public void add(Customer customer) throws Exception {
+	public void add(Attendant attendant) throws Exception {
 		
 		Transaction transaction = null;
 		Session session = null;
@@ -24,17 +24,17 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			
 			session = this.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
-			session.save(customer);
+			session.save(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new Exception(e);
 		} finally {
 			session.close();
 		}
 	}
 
 	@Override
-	public void update(Customer customer) throws Exception {
+	public void update(Attendant attendant) throws Exception {
 		
 		Transaction transaction = null;
 		Session session = null;
@@ -43,17 +43,17 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			
 			session = this.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
-			session.update(customer);
+			session.update(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new Exception(e);
 		} finally {
 			session.close();
 		}
 	}
 
 	@Override
-	public void delete(Customer customer) throws Exception {
+	public void delete(Attendant attendant) throws Exception {
 		
 		Transaction transaction = null;
 		Session session = null;
@@ -62,26 +62,26 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			
 			session = this.getSessionFactory().getCurrentSession();
 			transaction = session.beginTransaction();
-			session.delete(customer);
+			session.delete(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new Exception(e);
 		} finally {
 			session.close();
 		}
 	}
 
 	@Override
-	public List<Customer> getCustomers() throws Exception {
+	public List<Attendant> getAttendants() throws Exception {
 		
-		List<Customer> customers = new ArrayList<Customer>();
+		List<Attendant> attendants = new ArrayList<Attendant>();
         Session session = null;
         try{
             session = this.getSessionFactory().getCurrentSession();
             
-            Criteria criteria = session.createCriteria(Customer.class);
+            Criteria criteria = session.createCriteria(Attendant.class);
             
-            customers = criteria.list();
+            attendants = criteria.list();
             
         }catch(HibernateException e){
             throw new Exception(e);
@@ -89,18 +89,18 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
         	session.close();
         }
         
-        return customers;
+        return attendants;
 	}
 
 	@Override
-	public Customer getCustomer(String id) throws Exception {
+	public Attendant getAttendant(String id) throws Exception {
 		
-		Customer customer = null;
+		Attendant attendant = null;
         Session session = null;
         try{
             session = this.getSessionFactory().getCurrentSession();
             
-            customer = (Customer)session.load(Customer.class, id);
+            attendant = (Attendant)session.load(Attendant.class, id);
             
         }catch(HibernateException e){
             throw new Exception(e);
@@ -108,7 +108,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
             session.close();
         }
         
-        return customer;
+        return attendant;
 	}
 
 }
