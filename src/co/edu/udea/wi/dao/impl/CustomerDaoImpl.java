@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.CustomerDao;
 import co.edu.udea.wi.dto.Customer;
+import co.edu.udea.wi.exception.ClassException;
 
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
 
@@ -27,7 +28,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			session.save(customer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			session.update(customer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			session.delete(customer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
             customers = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return customers;
@@ -95,7 +96,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
             customer = (Customer)session.load(Customer.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return customer;

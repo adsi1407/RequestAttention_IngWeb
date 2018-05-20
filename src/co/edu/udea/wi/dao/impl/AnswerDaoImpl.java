@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import co.edu.udea.wi.exception.ClassException;
 import co.edu.udea.wi.dao.AnswerDao;
 import co.edu.udea.wi.dto.Answer;
 
@@ -27,7 +28,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			session.save(answer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			session.update(answer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			session.delete(answer);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
             answers = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return answers;
@@ -95,7 +96,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
             answer = (Answer)session.load(Answer.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return answer;

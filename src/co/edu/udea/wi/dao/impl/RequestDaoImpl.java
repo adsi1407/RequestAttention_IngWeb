@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.RequestDao;
 import co.edu.udea.wi.dto.Request;
+import co.edu.udea.wi.exception.ClassException;
 
 public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 
@@ -27,7 +28,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			session.save(request);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			session.update(request);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			session.delete(request);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
             requests = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return requests;
@@ -95,7 +96,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
             request = (Request)session.load(Request.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return request;

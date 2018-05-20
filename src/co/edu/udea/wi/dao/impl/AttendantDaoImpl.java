@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.AttendantDao;
 import co.edu.udea.wi.dto.Attendant;
+import co.edu.udea.wi.exception.ClassException;
 
 public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDao {
 
@@ -27,7 +28,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			session.save(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			throw new Exception(e);
+			throw new ClassException(e);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			session.update(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			throw new Exception(e);
+			throw new ClassException(e);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			session.delete(attendant);
 			transaction.commit();
 		} catch (Exception e) {
-			throw new Exception(e);
+			throw new ClassException(e);
 		} 
 	}
 
@@ -78,7 +79,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
             attendants = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return attendants;
@@ -95,7 +96,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
             attendant = (Attendant)session.load(Attendant.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return attendant;

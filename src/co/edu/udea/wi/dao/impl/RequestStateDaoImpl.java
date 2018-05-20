@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.RequestStateDao;
 import co.edu.udea.wi.dto.RequestState;
+import co.edu.udea.wi.exception.ClassException;
 
 public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestStateDao {
 
@@ -27,7 +28,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
 			session.save(requestState);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
 			session.update(requestState);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -61,7 +62,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
 			session.delete(requestState);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -78,7 +79,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
             requestStates = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return requestStates;
@@ -95,7 +96,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
             requestState = (RequestState)session.load(RequestState.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return requestState;

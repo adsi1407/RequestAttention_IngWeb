@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import co.edu.udea.wi.dao.RequestTypeDao;
 import co.edu.udea.wi.dto.RequestState;
 import co.edu.udea.wi.dto.RequestType;
+import co.edu.udea.wi.exception.ClassException;
 
 public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTypeDao {
 
@@ -28,7 +29,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			session.save(requestType);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -45,7 +46,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			session.update(requestType);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -62,7 +63,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			session.delete(requestType);
 			transaction.commit();
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new ClassException(e);
 		}
 	}
 
@@ -79,7 +80,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
             requestTypes = criteria.list();
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return requestTypes;
@@ -96,7 +97,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
             requestType = (RequestType)session.load(RequestType.class, id);
             
         }catch(HibernateException e){
-            throw new Exception(e);
+        	throw new ClassException(e);
         }
         
         return requestType;
