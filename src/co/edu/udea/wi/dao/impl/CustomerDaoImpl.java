@@ -28,8 +28,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -47,8 +45,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -66,8 +62,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -85,8 +79,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-        	session.close();
         }
         
         return customers;
@@ -104,8 +96,6 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-            session.close();
         }
         
         return customer;

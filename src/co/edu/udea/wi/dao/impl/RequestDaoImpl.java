@@ -28,8 +28,6 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -47,8 +45,6 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -66,8 +62,6 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -85,8 +79,6 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-        	session.close();
         }
         
         return requests;
@@ -104,8 +96,6 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-            session.close();
         }
         
         return request;

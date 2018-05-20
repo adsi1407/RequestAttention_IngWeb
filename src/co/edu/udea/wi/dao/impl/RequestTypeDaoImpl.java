@@ -29,8 +29,6 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -48,8 +46,6 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -67,8 +63,6 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -86,8 +80,6 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-        	session.close();
         }
         
         return requestTypes;
@@ -105,8 +97,6 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-            session.close();
         }
         
         return requestType;

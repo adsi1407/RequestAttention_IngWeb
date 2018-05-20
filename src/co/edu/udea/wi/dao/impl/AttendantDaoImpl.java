@@ -28,8 +28,6 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			transaction.commit();
 		} catch (Exception e) {
 			throw new Exception(e);
-		} finally {
-			session.close();
 		}
 	}
 
@@ -47,8 +45,6 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			transaction.commit();
 		} catch (Exception e) {
 			throw new Exception(e);
-		} finally {
-			session.close();
 		}
 	}
 
@@ -66,9 +62,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 			transaction.commit();
 		} catch (Exception e) {
 			throw new Exception(e);
-		} finally {
-			session.close();
-		}
+		} 
 	}
 
 	@Override
@@ -85,8 +79,6 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-        	session.close();
         }
         
         return attendants;
@@ -104,8 +96,6 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-            session.close();
         }
         
         return attendant;

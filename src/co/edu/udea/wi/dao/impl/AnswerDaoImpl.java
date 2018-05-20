@@ -28,8 +28,6 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -47,8 +45,6 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -66,8 +62,6 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 			transaction.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
-		} finally {
-			session.close();
 		}
 	}
 
@@ -85,8 +79,6 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-        	session.close();
         }
         
         return answers;
@@ -104,8 +96,6 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
             
         }catch(HibernateException e){
             throw new Exception(e);
-        }finally{
-            session.close();
         }
         
         return answer;
