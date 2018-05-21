@@ -7,7 +7,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/RequestAttention"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>
+		<property name="password" value="usbw"/>
 	</bean>
 	<bean id="sessionFactoryBean" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceBean"></property>
@@ -27,5 +27,27 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSourceBean"></property>
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="RequestStateDaoBean" class="co.edu.udea.wi.dao.impl.RequestStateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="RequestTypeDaoBean" class="co.edu.udea.wi.dao.impl.RequestTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="CustomerDaoBean" class="co.edu.udea.wi.dao.impl.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="RequestDaoBean" class="co.edu.udea.wi.dao.impl.RequestDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="AttendantDaoBean" class="co.edu.udea.wi.dao.impl.AttendantDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	<bean id="AnswerDaoBean" class="co.edu.udea.wi.dao.impl.AnswerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
 </beans>
