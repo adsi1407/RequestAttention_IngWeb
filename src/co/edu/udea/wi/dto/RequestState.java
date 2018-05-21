@@ -2,13 +2,13 @@ package co.edu.udea.wi.dto;
 
 public class RequestState {
 
-	private String ID;
+	private int ID;
 	private String Name;
 	
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 	public String getName() {
