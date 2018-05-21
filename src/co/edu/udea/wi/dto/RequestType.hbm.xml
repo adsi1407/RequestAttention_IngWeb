@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated May 4, 2018 3:06:28 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="co.edu.udea.wi.dto.RequestType" table="REQUESTTYPE">
+    <class name="co.edu.udea.wi.dto.RequestType" table="REQUESTTYPES">
         <id name="ID" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="Name" type="java.lang.String">
             <column name="NAME" />
