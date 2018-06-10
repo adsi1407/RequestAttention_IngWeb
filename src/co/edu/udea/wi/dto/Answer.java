@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Answer {
 
-	public int ID;
-	public Date answerDate;
-	public String description;
-	public Request request;
-	public Attendant attendant;
+	private int ID;
+	private Date answerDate;
+	private String description;
+	private Request request;
+	private Attendant attendant;
 	
 	public int getID() {
 		return ID;

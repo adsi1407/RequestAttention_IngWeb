@@ -2,12 +2,12 @@ package co.edu.udea.wi.dto;
 
 public class Customer {
 
-	public String ID;
-	public String firstName;
-	public String lastName;
-	public String email;
-	public String phoneNumber;
-	public String address;
+	private String ID;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phoneNumber;
+	private String address;
 	
 	public String getID() {
 		return ID;

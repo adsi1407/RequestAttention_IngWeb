@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Request {
 
-	public int ID;
-	public Date applicationDate;
-	public RequestType type;
-	public RequestState state;
-	public Customer customer;
-	public String description;
+	private int ID;
+	private Date applicationDate;
+	private RequestType type;
+	private RequestState state;
+	private Customer customer;
+	private String description;
 	
 	public int getID() {
 		return ID;
