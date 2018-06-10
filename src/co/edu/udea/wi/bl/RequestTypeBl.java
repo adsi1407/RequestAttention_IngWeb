@@ -1,17 +1,17 @@
-package co.edu.udea.wi.dao;
+package co.edu.udea.wi.bl;
 
 import java.util.List;
 
 import co.edu.udea.wi.dto.RequestType;
 
-public interface RequestTypeDao {
+public interface RequestTypeBl {
 
 	/**
 	 * Description Este método se utiliza para agregar un tipo de solicitud
 	 * @param requestType
 	 * @throws Exception
 	 */
-	public void add(RequestType requestType) throws Exception;
+	public void create(RequestType requestType) throws Exception;
 	
 	/**
 	 * Description Este método se utiliza para actualizar un tipo de solicitud

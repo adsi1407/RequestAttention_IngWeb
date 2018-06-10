@@ -1,16 +1,16 @@
-package co.edu.udea.wi.dao;
+package co.edu.udea.wi.bl;
 
 import java.util.List;
 import co.edu.udea.wi.dto.Attendant;
 
-public interface AttendantDao {
+public interface AttendantBl {
 
 	/**
 	 * Description Este método se utiliza para agregar un encargado
 	 * @param attendant
 	 * @throws Exception
 	 */
-	public void add(Attendant attendant) throws Exception;
+	public void create(Attendant attendant) throws Exception;
 	
 	/**
 	 * Description Este método se utiliza para actualizar un encargado

@@ -2,6 +2,7 @@ package co.edu.udea.wi.dao;
 
 import java.util.List;
 
+import co.edu.udea.wi.dto.Customer;
 import co.edu.udea.wi.dto.Request;
 
 /**
@@ -12,37 +13,45 @@ import co.edu.udea.wi.dto.Request;
 public interface RequestDao {
 
 	/**
-	 * Description Este mÃ©todo se utiliza para agregar una solicitud
+	 * Description Este método se utiliza para agregar una solicitud
 	 * @param request
 	 * @throws Exception
 	 */
 	public void add(Request request) throws Exception;
 	
 	/**
-	 * Description Este mÃ©todo se utiliza para actualizar una solicitud
+	 * Description Este método se utiliza para actualizar una solicitud
 	 * @param request
 	 * @throws Exception
 	 */
 	public void update(Request request) throws Exception;
 	
 	/**
-	 * Description Este mÃ©todo se utiliza para eliminar una solicitud
+	 * Description Este método se utiliza para eliminar una solicitud
 	 * @param request
 	 * @throws Exception
 	 */
 	public void delete(Request request) throws Exception;
 	
 	/**
-	 * Description Este mÃ©todo se utiliza para obtener las solicitudes
+	 * Description Este método se utiliza para obtener las solicitudes
 	 * @return
 	 * @throws Exception
 	 */
 	public List<Request> getRequests() throws Exception;
 	
 	/**
-	 * Description Este mÃ©todo se utiliza para obtener una solicitud por su id
+	 * Description Este método se utiliza para obtener una solicitud por su id
 	 * @return
 	 * @throws Exception
 	 */
-	public Request getRequest(int id) throws Exception;
+	public Request getRequestById(int id) throws Exception;
+	
+	/**
+	 * Description Este método se utiliza para obtener las solicitudes hechas por un cliente
+	 * @param customer
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Request> getRequestByCustomer(Customer customer) throws Exception;
 }

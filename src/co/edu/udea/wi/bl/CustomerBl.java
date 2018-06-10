@@ -1,16 +1,16 @@
-package co.edu.udea.wi.dao;
+package co.edu.udea.wi.bl;
 
 import java.util.List;
 import co.edu.udea.wi.dto.Customer;
 
-public interface CustomerDao {
+public interface CustomerBl {
 
 	/**
 	 * Description Este método se utiliza para agregar una respuesta a un cliente
 	 * @param customer
 	 * @throws Exception
 	 */
-	public void add(Customer customer) throws Exception;
+	public void create(Customer customer) throws Exception;
 	
 	/**
 	 * Description Este método se utiliza para actualizar una respuesta a un cliente
