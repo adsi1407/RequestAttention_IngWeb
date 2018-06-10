@@ -10,7 +10,6 @@ import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.RequestTypeDao;
-import co.edu.udea.wi.dto.RequestState;
 import co.edu.udea.wi.dto.RequestType;
 import co.edu.udea.wi.exception.ClassException;
 
@@ -87,7 +86,7 @@ public class RequestTypeDaoImpl extends HibernateDaoSupport implements RequestTy
 	}
 
 	@Override
-	public RequestType getRequestType(int id) throws Exception {
+	public RequestType getRequestTypeById(int id) throws Exception {
 		
 		RequestType requestType = null;
         Session session = null;

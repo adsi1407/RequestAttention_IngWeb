@@ -7,9 +7,11 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.dao.RequestDao;
+import co.edu.udea.wi.dto.Customer;
 import co.edu.udea.wi.dto.Request;
 import co.edu.udea.wi.exception.ClassException;
 
@@ -86,7 +88,7 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
 	}
 
 	@Override
-	public Request getRequest(int id) throws Exception {
+	public Request getRequestById(int id) throws Exception {
 		
 		Request request = null;
         Session session = null;
@@ -100,5 +102,25 @@ public class RequestDaoImpl extends HibernateDaoSupport implements RequestDao {
         }
         
         return request;
+	}
+	
+	@Override
+	public List<Request> getRequestByCustomer(Customer customer) throws Exception {
+		
+		List<Request> requests = new ArrayList<Request>();
+		Session session = null;
+		
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+			
+			Criteria criteria = session.createCriteria(Request.class);
+			
+			requests = criteria.add(Restrictions.eq("customer", customer)).list();
+			
+		}catch(HibernateException e){
+        	throw new ClassException(e);
+        }
+		
+		return requests;
 	}
 }

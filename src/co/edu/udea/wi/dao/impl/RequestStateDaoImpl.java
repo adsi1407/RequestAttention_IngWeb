@@ -86,7 +86,7 @@ public class RequestStateDaoImpl extends HibernateDaoSupport implements RequestS
 	}
 
 	@Override
-	public RequestState getRequestState(int id) throws Exception {
+	public RequestState getRequestStateById(int id) throws Exception {
 		
 		RequestState requestState = null;
         Session session = null;

@@ -86,7 +86,7 @@ public class AttendantDaoImpl extends HibernateDaoSupport implements AttendantDa
 	}
 
 	@Override
-	public Attendant getAttendant(String id) throws Exception {
+	public Attendant getAttendantById(String id) throws Exception {
 		
 		Attendant attendant = null;
         Session session = null;

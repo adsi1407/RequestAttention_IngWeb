@@ -7,11 +7,14 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.edu.udea.wi.exception.ClassException;
 import co.edu.udea.wi.dao.AnswerDao;
 import co.edu.udea.wi.dto.Answer;
+import co.edu.udea.wi.dto.Attendant;
+import co.edu.udea.wi.dto.Request;
 
 public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 
@@ -86,7 +89,7 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
 	}
 
 	@Override
-	public Answer getAnswer(int id) throws Exception {
+	public Answer getAnswerById(int id) throws Exception {
 		
 		Answer answer = null;
         Session session = null;
@@ -100,5 +103,44 @@ public class AnswerDaoImpl extends HibernateDaoSupport implements AnswerDao {
         }
         
         return answer;
+	}
+	
+	@Override
+	public List<Answer> getAnswersByRequest(Request request) throws Exception {
+		
+		List<Answer> answers = new ArrayList<Answer>();
+		Session session = null;
+		
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+            
+            Criteria criteria = session.createCriteria(Answer.class);
+            
+            answers = criteria.add(Restrictions.eq("request", request)).list();
+            
+		} catch (HibernateException e) {
+			throw new ClassException(e);
+		}
+		
+		return answers;
+	}
+	
+	@Override
+	public List<Answer> getAnswersByAttendant(Attendant attendant) throws Exception {
+
+		List<Answer> answers = new ArrayList<Answer>();
+		Session session = null;
+		
+		try {
+			session = this.getSessionFactory().getCurrentSession();
+            
+            Criteria criteria = session.createCriteria(Answer.class);
+            
+            answers = criteria.add(Restrictions.eq("attendant", attendant)).list();
+		} catch (HibernateException e) {
+			throw new ClassException(e);
+		}
+		
+		return answers;
 	}
 }

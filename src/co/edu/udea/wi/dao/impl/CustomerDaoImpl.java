@@ -86,7 +86,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	}
 
 	@Override
-	public Customer getCustomer(String id) throws Exception {
+	public Customer getCustomerById(String id) throws Exception {
 		
 		Customer customer = null;
         Session session = null;
