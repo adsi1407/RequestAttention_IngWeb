@@ -1,4 +1,4 @@
-package co.edu.udea.wi.test;
+package co.edu.udea.wi.dao;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;

@@ -1,4 +1,4 @@
-package co.edu.udea.wi.test;
+package co.edu.udea.wi.bl;
 
 import static org.junit.Assert.fail;
 
