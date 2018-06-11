@@ -37,7 +37,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 			
 			dao.add(requestState);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 			
 			dao.update(requestState);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 
@@ -63,7 +63,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 			
 			dao.delete(requestState);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 

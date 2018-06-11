@@ -39,7 +39,7 @@ public class Validations {
 		} else {
 
 			if (requestState.getName() == null || requestState.getName().trim().isEmpty()) {
-				errors.add("El nombre del estado de solicitud no puede ser nulo");
+				errors.add("El nombre del estado de solicitud no puede ser vacío");
 			}
 		}
 
