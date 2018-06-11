@@ -37,7 +37,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 			
 			dao.add(requestType);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 
@@ -50,7 +50,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 			
 			dao.update(requestType);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 
@@ -63,7 +63,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 			
 			dao.delete(requestType);
 		} else {
-			throw new ClassException();
+			throw new ClassException(errors);
 		}
 	}
 

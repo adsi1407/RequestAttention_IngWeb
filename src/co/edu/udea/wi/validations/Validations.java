@@ -22,7 +22,7 @@ public class Validations {
 		} else {
 
 			if (requestType.getName() == null || requestType.getName().trim().isEmpty()) {
-				errors.add("El nombre del tipo de solicitud no puede ser nulo");
+				errors.add("El nombre del tipo de solicitud no puede ser vacío");
 			}
 		}
 		
