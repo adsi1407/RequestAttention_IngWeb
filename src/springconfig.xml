@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="dataSourceBean"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/RequestAttention"/>
-		<property name="username" value="root"/>
-		<property name="password" value="usbw"/>
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/RequestAttention" />
+		<property name="username" value="root" />
+		<property name="password" value="usbw" />
 	</bean>
-	<bean id="sessionFactoryBean" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactoryBean"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceBean"></property>
 		<property name="mappingResources">
 			<list>
@@ -28,46 +33,61 @@
 			</props>
 		</property>
 	</bean>
-	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="dataSource" ref="dataSourceBean"></property>
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	
-	<bean id="RequestStateDaoBean" class="co.edu.udea.wi.dao.impl.RequestStateDaoImpl">
+
+	<bean id="RequestStateDaoBean"
+		class="co.edu.udea.wi.dao.impl.RequestStateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	<bean id="RequestTypeDaoBean" class="co.edu.udea.wi.dao.impl.RequestTypeDaoImpl">
+	<bean id="RequestTypeDaoBean"
+		class="co.edu.udea.wi.dao.impl.RequestTypeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	<bean id="CustomerDaoBean" class="co.edu.udea.wi.dao.impl.CustomerDaoImpl">
+	<bean id="CustomerDaoBean"
+		class="co.edu.udea.wi.dao.impl.CustomerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	<bean id="RequestDaoBean" class="co.edu.udea.wi.dao.impl.RequestDaoImpl">
+	<bean id="RequestDaoBean"
+		class="co.edu.udea.wi.dao.impl.RequestDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	<bean id="AttendantDaoBean" class="co.edu.udea.wi.dao.impl.AttendantDaoImpl">
+	<bean id="AttendantDaoBean"
+		class="co.edu.udea.wi.dao.impl.AttendantDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	<bean id="AnswerDaoBean" class="co.edu.udea.wi.dao.impl.AnswerDaoImpl">
+	<bean id="AnswerDaoBean"
+		class="co.edu.udea.wi.dao.impl.AnswerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
-	
-	<bean id="RequestTypeBlBean" class="co.edu.udea.wi.bl.impl.RequestTypeBlImpl">
+
+	<bean id="RequestTypeBlBean"
+		class="co.edu.udea.wi.bl.impl.RequestTypeBlImpl">
 		<property name="dao" ref="RequestTypeDaoBean"></property>
 	</bean>
-	<bean id="RequestStateBlBean" class="co.edu.udea.wi.bl.impl.RequestStateBlImpl">
+	<bean id="RequestStateBlBean"
+		class="co.edu.udea.wi.bl.impl.RequestStateBlImpl">
 		<property name="dao" ref="RequestStateDaoBean"></property>
 	</bean>
-	<bean id="CustomerBlBean" class="co.edu.udea.wi.bl.impl.CustomerBlImpl">
+	<bean id="CustomerBlBean"
+		class="co.edu.udea.wi.bl.impl.CustomerBlImpl">
 		<property name="dao" ref="CustomerDaoBean"></property>
 	</bean>
-	<bean id="AttendantBlBean" class="co.edu.udea.wi.bl.impl.AttendantBlImpl">
+	<bean id="AttendantBlBean"
+		class="co.edu.udea.wi.bl.impl.AttendantBlImpl">
 		<property name="dao" ref="AttendantDaoBean"></property>
 	</bean>
-	<bean id="RequestBlBean" class="co.edu.udea.wi.bl.impl.RequestBlImpl">
+	<bean id="RequestBlBean"
+		class="co.edu.udea.wi.bl.impl.RequestBlImpl">
 		<property name="dao" ref="RequestDaoBean"></property>
 	</bean>
-	<bean id="AnswerBlBean" class="co.edu.udea.wi.bl.impl.AnswerBlImpl">
+	<bean id="AnswerBlBean"
+		class="co.edu.udea.wi.bl.impl.AnswerBlImpl">
 		<property name="dao" ref="AnswerDaoBean"></property>
 	</bean>
+	
+	<context:component-scan base-package="co.edu.udea.wi.ws.rest" />
 </beans>
