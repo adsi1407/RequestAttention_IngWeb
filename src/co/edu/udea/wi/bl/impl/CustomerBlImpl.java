@@ -13,19 +13,19 @@ import co.edu.udea.wi.validations.Validations;
 public class CustomerBlImpl implements CustomerBl {
 
 	private Validations validations;
-	private CustomerDao dao;
+	private CustomerDao customerDao;
 	
 	public CustomerBlImpl() {
 
 		validations = new Validations();
 	}
-	
-	public CustomerDao getDao() {
-		return dao;
+
+	public CustomerDao getCustomerDao() {
+		return customerDao;
 	}
 
-	public void setDao(CustomerDao dao) {
-		this.dao = dao;
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class CustomerBlImpl implements CustomerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(customer);
+			customerDao.add(customer);
 		} else {
 			throw new ClassException();
 		}
@@ -48,7 +48,7 @@ public class CustomerBlImpl implements CustomerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(customer);
+			customerDao.update(customer);
 		} else {
 			throw new ClassException();
 		}
@@ -61,7 +61,7 @@ public class CustomerBlImpl implements CustomerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.delete(customer);
+			customerDao.delete(customer);
 		} else {
 			throw new ClassException();
 		}
@@ -70,13 +70,13 @@ public class CustomerBlImpl implements CustomerBl {
 	@Override
 	public List<Customer> getCustomers() throws Exception {
 		
-		return dao.getCustomers();
+		return customerDao.getCustomers();
 	}
 
 	@Override
 	public Customer getCustomerById(String id) throws Exception {
 
-		return dao.getCustomerById(id);
+		return customerDao.getCustomerById(id);
 	}
 
 }

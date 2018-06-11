@@ -15,19 +15,19 @@ import co.edu.udea.wi.validations.Validations;
 public class AnswerBlImpl implements AnswerBl {
 
 	private Validations validations;
-	private AnswerDao dao;
+	private AnswerDao answerDao;
 	
 	public AnswerBlImpl() {
 
 		validations = new Validations();
 	}
-		
-	public AnswerDao getDao() {
-		return dao;
+
+	public AnswerDao getAnswerDao() {
+		return answerDao;
 	}
 
-	public void setDao(AnswerDao dao) {
-		this.dao = dao;
+	public void setAnswerDao(AnswerDao answerDao) {
+		this.answerDao = answerDao;
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class AnswerBlImpl implements AnswerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(answer);
+			answerDao.add(answer);
 		} else {
 			throw new ClassException();
 		}
@@ -50,7 +50,7 @@ public class AnswerBlImpl implements AnswerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(answer);
+			answerDao.update(answer);
 		} else {
 			throw new ClassException();
 		}
@@ -63,7 +63,7 @@ public class AnswerBlImpl implements AnswerBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.delete(answer);
+			answerDao.delete(answer);
 		} else {
 			throw new ClassException();
 		}
@@ -72,13 +72,13 @@ public class AnswerBlImpl implements AnswerBl {
 	@Override
 	public List<Answer> getAnswers() throws Exception {
 		
-		return dao.getAnswers();
+		return answerDao.getAnswers();
 	}
 
 	@Override
 	public Answer getAnswerById(int id) throws Exception {
 		
-		return dao.getAnswerById(id);
+		return answerDao.getAnswerById(id);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class AnswerBlImpl implements AnswerBl {
 		
 		if (errors.size() == 0) {
 			
-			return dao.getAnswersByRequest(request);
+			return answerDao.getAnswersByRequest(request);
 		} else {
 			throw new ClassException();
 		}
@@ -101,7 +101,7 @@ public class AnswerBlImpl implements AnswerBl {
 		
 		if (errors.size() == 0) {
 			
-			return dao.getAnswersByAttendant(attendant);
+			return answerDao.getAnswersByAttendant(attendant);
 		} else {
 			throw new ClassException();
 		}

@@ -13,21 +13,21 @@ import co.edu.udea.wi.validations.Validations;
 public class AttendantBlImpl implements AttendantBl {
 
 	private Validations validations;
-	private AttendantDao dao;
+	private AttendantDao attendantDao;
 
 	public AttendantBlImpl() {
 
 		validations = new Validations();
 	}
 	
-	public AttendantDao getDao() {
-		return dao;
+	public AttendantDao getAttendantDao() {
+		return attendantDao;
 	}
 
-	public void setDao(AttendantDao dao) {
-		this.dao = dao;
+	public void setAttendantDao(AttendantDao attendantDao) {
+		this.attendantDao = attendantDao;
 	}
-	
+
 	@Override
 	public void create(Attendant attendant) throws Exception {
 		
@@ -35,7 +35,7 @@ public class AttendantBlImpl implements AttendantBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(attendant);
+			attendantDao.add(attendant);
 		} else {
 			throw new ClassException();
 		}
@@ -48,7 +48,7 @@ public class AttendantBlImpl implements AttendantBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(attendant);
+			attendantDao.update(attendant);
 		} else {
 			throw new ClassException();
 		}
@@ -61,7 +61,7 @@ public class AttendantBlImpl implements AttendantBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.delete(attendant);
+			attendantDao.delete(attendant);
 		} else {
 			throw new ClassException();
 		}
@@ -70,13 +70,13 @@ public class AttendantBlImpl implements AttendantBl {
 	@Override
 	public List<Attendant> getAttendants() throws Exception {
 		
-		return dao.getAttendants();
+		return attendantDao.getAttendants();
 	}
 
 	@Override
 	public Attendant getAttendantById(String id) throws Exception {
 		
-		return dao.getAttendantById(id);
+		return attendantDao.getAttendantById(id);
 	}
 
 }

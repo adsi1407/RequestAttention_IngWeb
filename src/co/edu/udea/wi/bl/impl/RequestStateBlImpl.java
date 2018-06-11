@@ -13,21 +13,21 @@ import co.edu.udea.wi.validations.Validations;
 public class RequestStateBlImpl implements RequestStateBl {
 
 	private Validations validations;
-	private RequestStateDao dao;
+	private RequestStateDao requestStateDao;
 	
 	public RequestStateBlImpl() {
 		
 		validations = new Validations();
 	}
 	
-	public RequestStateDao getDao() {
-		return dao;
+	public RequestStateDao getRequestStateDao() {
+		return requestStateDao;
 	}
 
-	public void setDao(RequestStateDao dao) {
-		this.dao = dao;
+	public void setRequestStateDao(RequestStateDao requestStateDao) {
+		this.requestStateDao = requestStateDao;
 	}
-	
+
 	@Override
 	public void create(RequestState requestState) throws Exception {
 		
@@ -35,7 +35,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(requestState);
+			requestStateDao.add(requestState);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -48,7 +48,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(requestState);
+			requestStateDao.update(requestState);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -61,7 +61,7 @@ public class RequestStateBlImpl implements RequestStateBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.delete(requestState);
+			requestStateDao.delete(requestState);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -70,13 +70,13 @@ public class RequestStateBlImpl implements RequestStateBl {
 	@Override
 	public List<RequestState> getRequestStates() throws Exception {
 
-		return dao.getRequestStates();
+		return requestStateDao.getRequestStates();
 	}
 
 	@Override
 	public RequestState getRequestStateById(int id) throws Exception {
 		
-		return dao.getRequestStateById(id);
+		return requestStateDao.getRequestStateById(id);
 	}
 
 }

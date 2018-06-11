@@ -14,19 +14,19 @@ import co.edu.udea.wi.validations.Validations;
 public class RequestBlImpl implements RequestBl {
 
 	private Validations validations;
-	private RequestDao dao;
+	private RequestDao requestDao;
 	
 	public RequestBlImpl() {
 
 		validations = new Validations();
 	}
-	
-	public RequestDao getDao() {
-		return dao;
+
+	public RequestDao getRequestDao() {
+		return requestDao;
 	}
 
-	public void setDao(RequestDao dao) {
-		this.dao = dao;
+	public void setRequestDao(RequestDao requestDao) {
+		this.requestDao = requestDao;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class RequestBlImpl implements RequestBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(request);
+			requestDao.add(request);
 		} else {
 			throw new ClassException();
 		}
@@ -49,7 +49,7 @@ public class RequestBlImpl implements RequestBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(request);
+			requestDao.update(request);
 		} else {
 			throw new ClassException();
 		}
@@ -62,7 +62,7 @@ public class RequestBlImpl implements RequestBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(request);
+			requestDao.add(request);
 		} else {
 			throw new ClassException();
 		}
@@ -71,13 +71,13 @@ public class RequestBlImpl implements RequestBl {
 	@Override
 	public List<Request> getRequests() throws Exception {
 
-		return dao.getRequests();
+		return requestDao.getRequests();
 	}
 
 	@Override
 	public Request getRequestById(int id) throws Exception {
 		
-		return dao.getRequestById(id);
+		return requestDao.getRequestById(id);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class RequestBlImpl implements RequestBl {
 		
 		if (errors.size() == 0) {
 			
-			return dao.getRequestByCustomer(customer);
+			return requestDao.getRequestByCustomer(customer);
 		} else {
 			throw new ClassException();
 		}

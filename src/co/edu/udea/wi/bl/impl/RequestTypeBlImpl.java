@@ -13,19 +13,19 @@ import co.edu.udea.wi.validations.Validations;
 public class RequestTypeBlImpl implements RequestTypeBl {
 	
 	private Validations validations;
-	private RequestTypeDao dao;
+	private RequestTypeDao requestTypeDao;
 
 	public RequestTypeBlImpl() {
 		
 		validations = new Validations();
 	}
-	
-	public RequestTypeDao getDao() {
-		return dao;
+
+	public RequestTypeDao getRequestTypeDao() {
+		return requestTypeDao;
 	}
 
-	public void setDao(RequestTypeDao dao) {
-		this.dao = dao;
+	public void setRequestTypeDao(RequestTypeDao requestTypeDao) {
+		this.requestTypeDao = requestTypeDao;
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.add(requestType);
+			requestTypeDao.add(requestType);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -48,7 +48,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.update(requestType);
+			requestTypeDao.update(requestType);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -61,7 +61,7 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 		
 		if (errors.size() == 0) {
 			
-			dao.delete(requestType);
+			requestTypeDao.delete(requestType);
 		} else {
 			throw new ClassException(errors);
 		}
@@ -70,13 +70,13 @@ public class RequestTypeBlImpl implements RequestTypeBl {
 	@Override
 	public List<RequestType> getRequestTypes() throws Exception {
 		
-		return dao.getRequestTypes();
+		return requestTypeDao.getRequestTypes();
 	}
 
 	@Override
 	public RequestType getRequestTypeById(int id) throws Exception {
 
-		return dao.getRequestTypeById(id);
+		return requestTypeDao.getRequestTypeById(id);
 	}
 
 }
