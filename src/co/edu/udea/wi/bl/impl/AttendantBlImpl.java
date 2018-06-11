@@ -13,13 +13,19 @@ import co.edu.udea.wi.validations.Validations;
 public class AttendantBlImpl implements AttendantBl {
 
 	private Validations validations;
-	
-	@Autowired
 	private AttendantDao dao;
-	
+
 	public AttendantBlImpl() {
 
 		validations = new Validations();
+	}
+	
+	public AttendantDao getDao() {
+		return dao;
+	}
+
+	public void setDao(AttendantDao dao) {
+		this.dao = dao;
 	}
 	
 	@Override

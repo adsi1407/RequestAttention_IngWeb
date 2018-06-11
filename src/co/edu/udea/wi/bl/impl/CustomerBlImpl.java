@@ -13,8 +13,6 @@ import co.edu.udea.wi.validations.Validations;
 public class CustomerBlImpl implements CustomerBl {
 
 	private Validations validations;
-	
-	@Autowired
 	private CustomerDao dao;
 	
 	public CustomerBlImpl() {
@@ -22,6 +20,14 @@ public class CustomerBlImpl implements CustomerBl {
 		validations = new Validations();
 	}
 	
+	public CustomerDao getDao() {
+		return dao;
+	}
+
+	public void setDao(CustomerDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public void create(Customer customer) throws Exception {
 		

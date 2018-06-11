@@ -32,6 +32,7 @@
 		<property name="dataSource" ref="dataSourceBean"></property>
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
+	
 	<bean id="RequestStateDaoBean" class="co.edu.udea.wi.dao.impl.RequestStateDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
 	</bean>
@@ -49,5 +50,24 @@
 	</bean>
 	<bean id="AnswerDaoBean" class="co.edu.udea.wi.dao.impl.AnswerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+	</bean>
+	
+	<bean id="RequestTypeBlBean" class="co.edu.udea.wi.bl.impl.RequestTypeBlImpl">
+		<property name="dao" ref="RequestTypeDaoBean"></property>
+	</bean>
+	<bean id="RequestStateBlBean" class="co.edu.udea.wi.bl.impl.RequestStateBlImpl">
+		<property name="dao" ref="RequestStateDaoBean"></property>
+	</bean>
+	<bean id="CustomerBlBean" class="co.edu.udea.wi.bl.impl.CustomerBlImpl">
+		<property name="dao" ref="CustomerDaoBean"></property>
+	</bean>
+	<bean id="AttendantBlBean" class="co.edu.udea.wi.bl.impl.AttendantBlImpl">
+		<property name="dao" ref="AttendantDaoBean"></property>
+	</bean>
+	<bean id="RequestBlBean" class="co.edu.udea.wi.bl.impl.RequestBlImpl">
+		<property name="dao" ref="RequestDaoBean"></property>
+	</bean>
+	<bean id="AnswerBlBean" class="co.edu.udea.wi.bl.impl.AnswerBlImpl">
+		<property name="dao" ref="AnswerDaoBean"></property>
 	</bean>
 </beans>

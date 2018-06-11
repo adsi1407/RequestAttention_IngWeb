@@ -15,8 +15,6 @@ import co.edu.udea.wi.validations.Validations;
 public class AnswerBlImpl implements AnswerBl {
 
 	private Validations validations;
-	
-	@Autowired
 	private AnswerDao dao;
 	
 	public AnswerBlImpl() {
@@ -24,6 +22,14 @@ public class AnswerBlImpl implements AnswerBl {
 		validations = new Validations();
 	}
 		
+	public AnswerDao getDao() {
+		return dao;
+	}
+
+	public void setDao(AnswerDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public void create(Answer answer) throws Exception {
 		

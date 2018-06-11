@@ -14,8 +14,6 @@ import co.edu.udea.wi.validations.Validations;
 public class RequestBlImpl implements RequestBl {
 
 	private Validations validations;
-	
-	@Autowired
 	private RequestDao dao;
 	
 	public RequestBlImpl() {
@@ -23,6 +21,14 @@ public class RequestBlImpl implements RequestBl {
 		validations = new Validations();
 	}
 	
+	public RequestDao getDao() {
+		return dao;
+	}
+
+	public void setDao(RequestDao dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public void create(Request request) throws Exception {
 		

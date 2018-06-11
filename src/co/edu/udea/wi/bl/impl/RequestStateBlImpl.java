@@ -13,13 +13,19 @@ import co.edu.udea.wi.validations.Validations;
 public class RequestStateBlImpl implements RequestStateBl {
 
 	private Validations validations;
-	
-	@Autowired
 	private RequestStateDao dao;
 	
 	public RequestStateBlImpl() {
 		
 		validations = new Validations();
+	}
+	
+	public RequestStateDao getDao() {
+		return dao;
+	}
+
+	public void setDao(RequestStateDao dao) {
+		this.dao = dao;
 	}
 	
 	@Override
