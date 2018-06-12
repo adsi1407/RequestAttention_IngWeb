@@ -3,6 +3,7 @@ package co.edu.udea.wi.bl.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.wi.bl.AttendantBl;
 import co.edu.udea.wi.dao.AttendantDao;
@@ -10,22 +11,17 @@ import co.edu.udea.wi.dto.Attendant;
 import co.edu.udea.wi.exception.ClassException;
 import co.edu.udea.wi.validations.Validations;
 
+@Transactional
 public class AttendantBlImpl implements AttendantBl {
 
 	private Validations validations;
+	
+	@Autowired
 	private AttendantDao attendantDao;
 
 	public AttendantBlImpl() {
 
 		validations = new Validations();
-	}
-	
-	public AttendantDao getAttendantDao() {
-		return attendantDao;
-	}
-
-	public void setAttendantDao(AttendantDao attendantDao) {
-		this.attendantDao = attendantDao;
 	}
 
 	@Override

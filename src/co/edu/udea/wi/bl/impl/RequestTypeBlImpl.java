@@ -3,6 +3,7 @@ package co.edu.udea.wi.bl.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.wi.bl.RequestTypeBl;
 import co.edu.udea.wi.dao.RequestTypeDao;
@@ -10,22 +11,17 @@ import co.edu.udea.wi.dto.RequestType;
 import co.edu.udea.wi.exception.ClassException;
 import co.edu.udea.wi.validations.Validations;
 
+@Transactional
 public class RequestTypeBlImpl implements RequestTypeBl {
 	
 	private Validations validations;
+	
+	@Autowired
 	private RequestTypeDao requestTypeDao;
 
 	public RequestTypeBlImpl() {
 		
 		validations = new Validations();
-	}
-
-	public RequestTypeDao getRequestTypeDao() {
-		return requestTypeDao;
-	}
-
-	public void setRequestTypeDao(RequestTypeDao requestTypeDao) {
-		this.requestTypeDao = requestTypeDao;
 	}
 
 	@Override

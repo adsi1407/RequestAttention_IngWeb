@@ -3,6 +3,7 @@ package co.edu.udea.wi.bl.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.wi.bl.AnswerBl;
 import co.edu.udea.wi.dao.AnswerDao;
@@ -12,22 +13,17 @@ import co.edu.udea.wi.dto.Request;
 import co.edu.udea.wi.exception.ClassException;
 import co.edu.udea.wi.validations.Validations;
 
+@Transactional
 public class AnswerBlImpl implements AnswerBl {
 
 	private Validations validations;
+	
+	@Autowired
 	private AnswerDao answerDao;
 	
 	public AnswerBlImpl() {
 
 		validations = new Validations();
-	}
-
-	public AnswerDao getAnswerDao() {
-		return answerDao;
-	}
-
-	public void setAnswerDao(AnswerDao answerDao) {
-		this.answerDao = answerDao;
 	}
 
 	@Override
