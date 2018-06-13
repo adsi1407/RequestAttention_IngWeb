@@ -70,4 +70,5 @@
 	</bean>
 
 	<context:component-scan base-package="co.edu.udea.wi.ws.rest" />
+	<tx:annotation-driven/>
 </beans>
